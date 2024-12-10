@@ -26,4 +26,17 @@ class StudentController extends Controller
             return ["status" => "error", "message" => "Something went wrong"];
         }
     }
+
+    function updateStudent(Request $request)
+    {
+        $student = Student::find($request->id);
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->phone = $request->phone;
+        if ($student->save()) {
+            return ["status" => "success", "message" => "Student updated successfully"];
+        } else {
+            return ["status" => "error", "message" => "Something went wrong"];
+        }
+    }
 }
