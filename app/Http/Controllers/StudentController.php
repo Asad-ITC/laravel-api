@@ -40,7 +40,8 @@ class StudentController extends Controller
         }
     }
 
-    function deleteStudent($id) {
+    function deleteStudent($id)
+    {
         $student = Student::find($id);
         if ($student->delete()) {
             return ["status" => "success", "message" => "Student deleted successfully"];
@@ -49,13 +50,24 @@ class StudentController extends Controller
         }
     }
 
-    
-    function deleteStudent2($id) {
+
+    function deleteStudent2($id)
+    {
         $student = Student::destroy($id);
         if ($student) {
             return ["status" => "success", "message" => "Student deleted successfully"];
         } else {
             return ["status" => "error", "message" => "Something went wrong"];
+        }
+    }
+
+    function searchStudent($name)
+    {
+        $student = Student::where('name', 'like', '%' . $name . '%')->get();
+        if ($student) {
+            return ["status" => "success", "message" => $student];
+        } else {
+            return ["status" => "error", "message" => "no record found"];
         }
     }
 }
