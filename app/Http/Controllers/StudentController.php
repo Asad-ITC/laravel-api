@@ -7,9 +7,23 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
-    //
-    function list() {
+
+    function list()
+    {
         // return "List function called";
         return Student::all();
+    }
+
+    function addStudent(Request $request)
+    {
+        $student = new Student();
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->phone = $request->phone;
+        if ($student->save()) {
+            return ["status" => "success", "message" => "Student added successfully"];
+        } else {
+            return ["status" => "error", "message" => "Something went wrong"];
+        }
     }
 }
