@@ -23,4 +23,4 @@ Route::get('search-student/{name}', [StudentController::class, 'searchStudent'])
 Route::resource('member', MemberController::class);
 
 Route::post('signup', [UserAuthController::class, 'signup']);
-Route::post('signin', [UserAuthController::class, 'signin']);
+Route::post('signin', [UserAuthController::class, 'login']);
