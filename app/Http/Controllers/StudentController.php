@@ -39,4 +39,23 @@ class StudentController extends Controller
             return ["status" => "error", "message" => "Something went wrong"];
         }
     }
+
+    function deleteStudent($id) {
+        $student = Student::find($id);
+        if ($student->delete()) {
+            return ["status" => "success", "message" => "Student deleted successfully"];
+        } else {
+            return ["status" => "error", "message" => "Something went wrong"];
+        }
+    }
+
+    
+    function deleteStudent2($id) {
+        $student = Student::destroy($id);
+        if ($student) {
+            return ["status" => "success", "message" => "Student deleted successfully"];
+        } else {
+            return ["status" => "error", "message" => "Something went wrong"];
+        }
+    }
 }
