@@ -32,4 +32,18 @@ Route::get('login', [UserAuthController::class, 'login'])->name('login');
 
 // For Employee Route:
 
-Route::apiResource('employees', EmployeeController::class);
+// without protection:
+// Route::apiResource('employees', EmployeeController::class);
+
+// With Gurd:
+// Route::middleware('auth:sanctum')->group(function () {
+//     Route::get('/employees', [EmployeeController::class, 'index']);
+//     Route::post('/employees', [EmployeeController::class, 'store']);
+//     Route::get('/employees/{id}', [EmployeeController::class, 'show']);
+//     Route::put('/employees/{id}', [EmployeeController::class, 'update']);
+//     Route::delete('/employees/{id}', [EmployeeController::class, 'destroy']);
+// });
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('employees', EmployeeController::class);
+});
