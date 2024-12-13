@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserAuthController;
@@ -29,4 +30,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
 Route::get('login', [UserAuthController::class, 'login'])->name('login');
 
+// For Employee Route:
 
+Route::apiResource('employees', EmployeeController::class);
