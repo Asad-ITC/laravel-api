@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 class ApiResponse
 {
-    public static function success($data, $message = 'Success', $statusCode = 200)
+    public static function success($data = null, $message = 'Success', $statusCode = 200)
     {
         return response()->json([
             'timestamp' => now()->toISOString(),

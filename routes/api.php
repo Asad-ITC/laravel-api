@@ -17,6 +17,8 @@ Route::get('test', function () {
 
 Route::post('signup', [UserAuthController::class, 'signup']);
 Route::post('login', [UserAuthController::class, 'login']);
+Route::post('logout', [UserAuthController::class, 'logout'])->middleware('auth:sanctum');
+
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('students', [StudentController::class, 'list']);
