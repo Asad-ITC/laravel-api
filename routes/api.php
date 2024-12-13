@@ -28,3 +28,5 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 
 Route::get('login', [UserAuthController::class, 'login'])->name('login');
+
+
